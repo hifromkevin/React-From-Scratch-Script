@@ -65,8 +65,36 @@ echo "" >> index.jsx
 echo "ReactDOM.render(<App />, document.getElementById('app'));" >> index.jsx
 cd components
 touch App.jsx
+echo "import React, { Component } from 'react';" >> App.jsx
+echo "import FontAwesome from 'react-fontawesome';" >> App.jsx
+echo "" >> App.jsx
+echo "import MyComponent from './MyComponent.jsx';" >> App.jsx
+echo "" >> App.jsx
+echo "export default class App extends Component {" >> App.jsx
+echo "	constructor(props) {" >> App.jsx
+echo "		super(props);" >> App.jsx
+echo "" >> App.jsx
+echo "		this.state = {" >> App.jsx
+echo "			abilities: ['Access to state', 'Utilizes components', 'Uses FontAwesome and SASS']" >> App.jsx
+echo "		}" >> App.jsx
+echo "	}" >> App.jsx
+echo "" >> App.jsx
+echo '	render() {' >> App.jsx
+echo '		<div className="main">' >> App.jsx
+echo '			<h1 className="main__heading">Congratulations! <FontAwesome name="star"></h1>' >> App.jsx
+echo '			<p className="main__text">You now have a React application! You can:</p>' >> App.jsx
+echo '			<ul>{this.state.abilities.map((ability, i) => {' >> App.jsx
+echo '				<MyComponent key={i} ability={ability} />' >> App.jsx
+echo '			})}</ul>' >> App.jsx
+echo '' >> App.jsx
+echo '			<p><em>To change the styles, go to client > dist > styles > style.sass </em></p>' >> App.jsx
+echo '		</div>' >> App.jsx
+echo '	}' >> App.jsx
+echo '}' >> App.jsx
 touch MyComponent.jsx
+
 cd ../../../server
 touch index.js
+
 cd ..
 touch webpack.config.js
