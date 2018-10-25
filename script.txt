@@ -2,8 +2,10 @@
 npm init
 npm i -S react react-dom express path font-awesome react-fontawesome
 npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader css-loader file-loader node-sass sass-loader style-loader webpack webpack-cli
-
-
+mkdir client server 
+cd client
+mkdir src src/components src/libraries dist dist/styles
+cd dist
 touch index.html
 echo '<!DOCTYPE html>' >> index.html
 echo '<html>' >> index.html
@@ -16,3 +18,54 @@ echo '' >> index.html
 echo '  <script type="text/javascript" src="bundle.js"></script>' >> index.html
 echo '</body>' >> index.html
 echo '</html>' >> index.html
+cd styles
+touch style.sass
+echo "//SAMPLE SASS FILE" >> style.sass
+echo "" >> style.sass
+echo "/***************/" >> style.sass
+echo "/*** IMPORTS ***/" >> style.sass
+echo "/***************/" >> style.sass
+echo "" >> style.sass
+echo "/*****************/" >> style.sass
+echo "/*** VARIABLES ***/" >> style.sass
+echo "/*****************/" >> style.sass
+echo "" >> style.sass
+echo "$white: #fff" >> style.sass
+echo "$black-text: #313131" >> style.sass
+echo "$orange: #f90" >> style.sass
+echo "$green: #090" >> style.sass
+echo "" >> style.sass
+echo "/****************/" >> style.sass
+echo "/***  RESETS  ***/" >> style.sass
+echo "/****************/" >> style.sass
+echo "" >> style.sass
+echo "*" >> style.sass
+echo "  margin: 0" >> style.sass
+echo "  padding: 0" >> style.sass
+echo "" >> style.sass
+echo "/****************/" >> style.sass
+echo "/***  CUSTOM  ***/" >> style.sass
+echo "/****************/" >> style.sass
+echo "  " >> style.sass
+echo ".main" >> style.sass
+echo "  background: $green" >> style.sass
+echo "    &__heading" >> style.sass
+echo "      color: $orange" >> style.sass
+echo "    &__text" >> style.sass
+echo "      color: $black-text" >> style.sass
+cd ../../src
+touch index.jsx
+echo "import React from 'react';" >> index.jsx
+echo "import ReactDOM from 'react-dom';" >> index.jsx
+echo "" >> index.jsx
+echo "import App from '.components/App.jsx';" >> index.jsx
+echo "import '../dist/styles/style.sass';" >> index.jsx
+echo "import 'font-awesome/css/font-awesome.css';" >> index.jsx
+echo "" >> index.jsx
+echo "ReactDOM.render(<App />, document.getElementById('app'));" >> index.jsx
+cd components
+touch App.jsx
+touch MyComponent.jsx
+cd ../../../server
+touch index.js
+cd ../webpack.config.js
