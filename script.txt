@@ -92,7 +92,13 @@ echo '		</div>' >> App.jsx
 echo '	}' >> App.jsx
 echo '}' >> App.jsx
 touch MyComponent.jsx
-
+echo "import React from 'react';" >> MyComponent.jsx
+echo "" >> MyComponent.jsx
+echo "const MyComponent = ({ ability }) => (" >> MyComponent.jsx
+echo "	<li>{ability}</li>" >> MyComponent.jsx
+echo ")" >> MyComponent.jsx
+echo "" >> MyComponent.jsx
+echo "export default MyComponent;" >> MyComponent.jsx
 cd ../../../server
 touch index.js
 
