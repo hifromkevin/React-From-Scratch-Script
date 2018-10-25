@@ -68,4 +68,5 @@ touch App.jsx
 touch MyComponent.jsx
 cd ../../../server
 touch index.js
-cd ../webpack.config.js
+cd ..
+touch webpack.config.js
