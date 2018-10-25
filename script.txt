@@ -107,7 +107,7 @@ echo "const port = 3005;" >> index.js
 echo "" >> index.js
 echo "app.use(express.static(__dirname + '/../client/dist'));" >> index.js
 echo "" >> index.js
-echo "app.listen(port, () => console.log(`Listening on port ${port}!`));" >> index.js
+echo 'app.listen(port, () => console.log(`Listening on port ${port}!`));' >> index.js
 cd ..
 touch webpack.config.js
 echo "const path = require('path');" >> webpack.config.js
@@ -116,7 +116,7 @@ echo "const SRC_DIR = path.join(__dirname, '/client/src');" >> webpack.config.js
 echo "" >> webpack.config.js
 echo "module.exports = {" >> webpack.config.js
 echo "	mode: 'development'," >> webpack.config.js
-echo "	entry: `${SRC_DIR}/index.jsx`," >> webpack.config.js
+echo '	entry: `${SRC_DIR}/index.jsx`,' >> webpack.config.js
 echo "	output: {" >> webpack.config.js
 echo "		path: DIST_DIR," >> webpack.config.js
 echo "		filename: 'bundle.js'" >> webpack.config.js
