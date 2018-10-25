@@ -1,0 +1,18 @@
+#!/bin/bash
+npm init
+npm i -S react react-dom express path font-awesome react-fontawesome
+npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader css-loader file-loader node-sass sass-loader style-loader webpack webpack-cli
+
+
+touch index.html
+echo '<!DOCTYPE html>' >> index.html
+echo '<html>' >> index.html
+echo '<head>' >> index.html
+echo '  <title>Title Goes Here</title>' >> index.html
+echo '</head>' >> index.html
+echo '<body>' >> index.html
+echo '  <div id="app"></div>' >> index.html
+echo '' >> index.html
+echo '  <script type="text/javascript" src="bundle.js"></script>' >> index.html
+echo '</body>' >> index.html
+echo '</html>' >> index.html
