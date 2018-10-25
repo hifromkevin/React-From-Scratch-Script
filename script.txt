@@ -101,6 +101,12 @@ echo "" >> MyComponent.jsx
 echo "export default MyComponent;" >> MyComponent.jsx
 cd ../../../server
 touch index.js
-
+echo "const express = require('express');" >> index.js
+echo "const app = express();" >> index.js
+echo "const port = 3005;" >> index.js
+echo "" >> index.js
+echo "app.use(express.static(__dirname + '/../client/dist'));" >> index.js
+echo "" >> index.js
+echo "app.listen(port, () => console.log(`Listening on port ${port}!`));" >> index.js
 cd ..
 touch webpack.config.js
