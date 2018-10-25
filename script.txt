@@ -110,3 +110,30 @@ echo "" >> index.js
 echo "app.listen(port, () => console.log(`Listening on port ${port}!`));" >> index.js
 cd ..
 touch webpack.config.js
+echo "const path = require('path');" >> webpack.config.js
+echo "const DIST_DIR = path.join(__dirname, '/client/dist'); " >> webpack.config.js
+echo "const SRC_DIR = path.join(__dirname, '/client/src');" >> webpack.config.js
+echo "" >> webpack.config.js
+echo "module.exports = {" >> webpack.config.js
+echo "	mode: 'development'," >> webpack.config.js
+echo "	entry: `${SRC_DIR}/index.jsx`," >> webpack.config.js
+echo "	output: {" >> webpack.config.js
+echo "		path: DIST_DIR," >> webpack.config.js
+echo "		filename: 'bundle.js'" >> webpack.config.js
+echo "	}," >> webpack.config.js
+echo "	modules: {" >> webpack.config.js
+echo "		rules: [" >> webpack.config.js
+echo "			{" >> webpack.config.js
+echo '				test: /\.jsx$/,' >> webpack.config.js
+echo "				loader: 'babel-loader'," >> webpack.config.js
+echo "				query: {" >> webpack.config.js
+echo "					presets: ['@babel/preset-env', '@babel/preset-react']" >> webpack.config.js
+echo "				}" >> webpack.config.js
+echo "			}," >> webpack.config.js
+echo "			{" >> webpack.config.js
+echo '				test: /\.sass$/,' >> webpack.config.js
+echo "				loaders: ['style-loader','css-loader','sass-loader']" >> webpack.config.js
+echo "			}" >> webpack.config.js
+echo "		]" >> webpack.config.js
+echo "	}" >> webpack.config.js
+echo "};" >> webpack.config.js
