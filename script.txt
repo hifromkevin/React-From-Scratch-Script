@@ -1,7 +1,7 @@
 #!/bin/bash
 npm init
 npm i -S react react-dom express path font-awesome react-fontawesome
-npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader css-loader file-loader node-sass sass-loader style-loader webpack webpack-cli
+npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader css-loader file-loader node-sass sass-loader style-loader webpack webpack-cli url-loader
 mkdir client server 
 cd client
 mkdir src src/components src/libraries dist dist/styles
@@ -49,16 +49,16 @@ echo "/****************/" >> style.sass
 echo "  " >> style.sass
 echo ".main" >> style.sass
 echo '  background: $green' >> style.sass
-echo "    &__heading" >> style.sass
-echo '      color: $orange' >> style.sass
-echo "    &__text" >> style.sass
-echo '      color: $black-text' >> style.sass
+echo "  &__heading" >> style.sass
+echo '    color: $orange' >> style.sass
+echo "  &__text" >> style.sass
+echo '    color: $black-text' >> style.sass
 cd ../../src
 touch index.jsx
 echo "import React from 'react';" >> index.jsx
 echo "import ReactDOM from 'react-dom';" >> index.jsx
 echo "" >> index.jsx
-echo "import App from '.components/App.jsx';" >> index.jsx
+echo "import App from './components/App.jsx';" >> index.jsx
 echo "import '../dist/styles/style.sass';" >> index.jsx
 echo "import 'font-awesome/css/font-awesome.css';" >> index.jsx
 echo "" >> index.jsx
@@ -80,15 +80,15 @@ echo "		}" >> App.jsx
 echo "	}" >> App.jsx
 echo "" >> App.jsx
 echo '	render() {' >> App.jsx
-echo '		<div className="main">' >> App.jsx
-echo '			<h1 className="main__heading">Congratulations! <FontAwesome name="star"></h1>' >> App.jsx
+echo '		return (<div className="main">' >> App.jsx
+echo '			<h1 className="main__heading">Congratulations! <FontAwesome name="star" /></h1>' >> App.jsx
 echo '			<p className="main__text">You now have a React application! You can:</p>' >> App.jsx
 echo '			<ul>{this.state.abilities.map((ability, i) => {' >> App.jsx
-echo '				<MyComponent key={i} ability={ability} />' >> App.jsx
+echo '				return <MyComponent key={i} ability={ability} />' >> App.jsx
 echo '			})}</ul>' >> App.jsx
 echo '' >> App.jsx
 echo '			<p><em>To change the styles, go to client > dist > styles > style.sass </em></p>' >> App.jsx
-echo '		</div>' >> App.jsx
+echo '		</div>)' >> App.jsx
 echo '	}' >> App.jsx
 echo '}' >> App.jsx
 touch MyComponent.jsx
@@ -121,7 +121,7 @@ echo "	output: {" >> webpack.config.js
 echo "		path: DIST_DIR," >> webpack.config.js
 echo "		filename: 'bundle.js'" >> webpack.config.js
 echo "	}," >> webpack.config.js
-echo "	modules: {" >> webpack.config.js
+echo "	module: {" >> webpack.config.js
 echo "		rules: [" >> webpack.config.js
 echo "			{" >> webpack.config.js
 echo '				test: /\.jsx$/,' >> webpack.config.js
@@ -133,7 +133,15 @@ echo "			}," >> webpack.config.js
 echo "			{" >> webpack.config.js
 echo '				test: /\.sass$/,' >> webpack.config.js
 echo "				loaders: ['style-loader','css-loader','sass-loader']" >> webpack.config.js
-echo "			}" >> webpack.config.js
+echo "			}," >> webpack.config.js
+echo "      {" >> webpack.config.js
+echo '        test: /\.css$/,' >> webpack.config.js
+echo "        loaders: ['style-loader','css-loader','sass-loader']" >> webpack.config.js
+echo "      }," >> webpack.config.js
+echo "      {" >> webpack.config.js
+echo '        test: /\.(png|woff|woff2|eot|ttf|svg)$/,' >> webpack.config.js
+echo "        loader: 'url-loader?limit=100000'" >> webpack.config.js
+echo "      }" >> webpack.config.js
 echo "		]" >> webpack.config.js
 echo "	}" >> webpack.config.js
 echo "};" >> webpack.config.js
