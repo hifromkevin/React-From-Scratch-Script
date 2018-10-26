@@ -34,6 +34,7 @@ echo '$white: #fff' >> style.sass
 echo '$black-text: #313131' >> style.sass
 echo '$orange: #f90' >> style.sass
 echo '$green: #090' >> style.sass
+echo '$blue: #009' >> style.sass
 echo "" >> style.sass
 echo "/****************/" >> style.sass
 echo "/***  RESETS  ***/" >> style.sass
@@ -53,6 +54,12 @@ echo "  &__heading" >> style.sass
 echo '    color: $orange' >> style.sass
 echo "  &__text" >> style.sass
 echo '    color: $black-text' >> style.sass
+echo "  &__list" >> style.sass
+echo '    color: $blue' >> style.sass
+echo '    list-style-type: circle' >> style.sass
+echo '    margin-left: 2%' >> style.sass
+echo "  &__listItem" >> style.sass
+echo '    margin-left: 2%' >> style.sass
 cd ../../src
 touch index.jsx
 echo "import React from 'react';" >> index.jsx
@@ -75,7 +82,7 @@ echo "	constructor(props) {" >> App.jsx
 echo "		super(props);" >> App.jsx
 echo "" >> App.jsx
 echo "		this.state = {" >> App.jsx
-echo "			abilities: ['Access to state', 'Utilizes components', 'Uses FontAwesome and SASS']" >> App.jsx
+echo "			abilities: ['Access to state', 'Utilize components', 'Use FontAwesome and SASS']" >> App.jsx
 echo "		}" >> App.jsx
 echo "	}" >> App.jsx
 echo "" >> App.jsx
@@ -83,7 +90,7 @@ echo '	render() {' >> App.jsx
 echo '		return (<div className="main">' >> App.jsx
 echo '			<h1 className="main__heading">Congratulations! <FontAwesome name="star" /></h1>' >> App.jsx
 echo '			<p className="main__text">You now have a React application! You can:</p>' >> App.jsx
-echo '			<ul>{this.state.abilities.map((ability, i) => {' >> App.jsx
+echo '			<ul className="main__list">{this.state.abilities.map((ability, i) => {' >> App.jsx
 echo '				return <MyComponent key={i} ability={ability} />' >> App.jsx
 echo '			})}</ul>' >> App.jsx
 echo '' >> App.jsx
